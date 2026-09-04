@@ -1,0 +1,77 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "owner@kidicare.com",
+      "passwordHash": "$2a$12$POTDCBdCEwQKpso5F0lNQ.l4L0Gb3dBCT58EzPv3byA85yX65V2AK",
+      "role": "owner"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "KidiTemp Pro Digital Thermometer",
+      "image": "img/product-thermometer.jpg",
+      "price": 30.23,
+      "description": "Fast, accurate temperature readings for everyday family care.",
+      "rating": "4.9 (312)"
+    },
+    {
+      "id": 2,
+      "name": "KidiSafe Complete First Aid Kit",
+      "image": "img/product-firstaid.jpg",
+      "price": 45.3,
+      "description": "A thoughtfully assembled first aid kit with essential supplies for home, travel, and little emergencies.",
+      "rating": "4.8 (247)"
+    },
+    {
+      "id": 3,
+      "name": "KidiPulse Pediatric Oximeter",
+      "image": "img/product-oximeter.jpg",
+      "price": 26,
+      "description": "Simple, comfortable at-home wellness checks.",
+      "rating": "4.8 (189)"
+    },
+    {
+      "id": 4,
+      "name": "KidiSoft Gentle Skin Care Set",
+      "image": "img/product-skincare.jpg",
+      "price": 34.99,
+      "description": "Gentle daily care made for delicate skin.",
+      "rating": "4.6 (415)"
+    },
+    {
+      "id": 5,
+      "name": "KidiBreeze Compact Nebulizer",
+      "image": "img/product-nebulizer.jpg",
+      "price": 59.99,
+      "description": "A quieter, more comfortable care experience.",
+      "rating": "4.9 (156)"
+    },
+    {
+      "id": 6,
+      "name": "KidiScan Forehead Thermometer",
+      "image": "img/product-thermometer.jpg",
+      "price": 38.99,
+      "description": "Quick, contactless temperature checks.",
+      "rating": "4.7 (203)"
+    },
+    {
+      "id": 7,
+      "name": "KidiGuard Travel First Aid Pouch",
+      "image": "img/product-firstaid.jpg",
+      "price": 19.99,
+      "description": "Portable essentials for everyday adventures.",
+      "rating": "4.8 (91)"
+    },
+    {
+      "id": 8,
+      "name": "KidiBand Wrist Health Monitor",
+      "image": "img/product-oximeter.jpg",
+      "price": 42.99,
+      "description": "Convenient wellness information close at hand.",
+      "rating": "4.9 (278)"
+    }
+  ],
+  "orders": []
+}

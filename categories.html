@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Categories — Kidi Care</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/catalog.css" />
+</head>
+<body class="catalog-page">
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" id="logo"><img class="custom-logo" src="img/logo.jpg" alt="Kidi Care Logo" width="48" height="48" /><span class="logo-text">Kidi Care</span></a>
+      <nav class="nav-links" id="nav-links"><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="categories.html" class="active">Categories</a><a href="index.html#trust">About Us</a><a href="index.html#footer">Contact</a></nav>
+      <div class="search-bar" id="search-bar"><select id="search-category" aria-label="Category filter"><option value="all">All</option><option value="pediatric">Pediatric</option><option value="firstaid">First Aid</option><option value="hygiene">Hygiene</option></select><input type="text" placeholder="Search products..." id="search-input" aria-label="Search products" /><button type="button" id="search-btn" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button></div>
+      <div class="header-actions"><a class="icon-btn" href="cart.html" aria-label="Shopping cart"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></a><a class="account-btn" href="auth.html" aria-label="Log in or sign up"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>Account</span></a><button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button></div>
+    </div>
+  </header>
+  <main class="catalog-main">
+    <div class="catalog-heading"><span class="catalog-kicker">Find what your family needs</span><h1>Shop by category</h1><p>Explore trusted essentials organized for easier care.</p></div>
+    <div class="category-page-grid">
+      <a class="category-page-card purple" href="shop.html"><span>♡</span><h2>Pediatric Monitoring</h2><p>Thermometers, oximeters &amp; health monitors</p><strong>48 products →</strong></a>
+      <a class="category-page-card mint" href="shop.html"><span>＋</span><h2>First Aid Kits</h2><p>Complete kits and portable emergency essentials</p><strong>36 products →</strong></a>
+      <a class="category-page-card rose" href="shop.html"><span>✦</span><h2>Hygiene &amp; Skin Care</h2><p>Gentle products for everyday routines</p><strong>27 products →</strong></a>
+      <a class="category-page-card amber" href="shop.html"><span>◌</span><h2>Orthopedic &amp; Mobility Aids</h2><p>Braces, supports &amp; mobility tools</p><strong>24 products →</strong></a>
+      <a class="category-page-card purple" href="shop.html"><span>◉</span><h2>Diagnostic Equipment</h2><p>Stethoscopes, BP monitors &amp; more</p><strong>31 products →</strong></a>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Log in or Sign up — Kidi Care</title>
+  <meta name="description" content="Access your Kidi Care account or create a new one." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+</head>
+<body class="auth-page">
+  <main class="auth-layout">
+    <a class="auth-brand" href="index.html" aria-label="Back to Kidi Care home">
+      <img src="img/logo.jpg" alt="Kidi Care Logo" width="48" height="48" />
+      <span>Kidi Care</span>
+    </a>
+
+    <section class="auth-card" aria-labelledby="auth-title">
+      <div class="auth-heading">
+        <span class="auth-kicker">Welcome to Kidi Care</span>
+        <h1 id="auth-title">Log in to your account</h1>
+        <p id="auth-description">Manage your orders and save your favorite care essentials.</p>
+      </div>
+
+      <div class="auth-tabs" role="tablist" aria-label="Account access">
+        <button class="auth-tab active" id="login-tab" type="button" role="tab" aria-selected="true" aria-controls="login-panel">Log in</button>
+        <button class="auth-tab" id="signup-tab" type="button" role="tab" aria-selected="false" aria-controls="signup-panel">Sign up</button>
+      </div>
+
+      <form class="auth-form" id="login-panel" data-mode="login" role="tabpanel" aria-labelledby="login-tab">
+        <label for="login-email">Email address</label>
+        <input id="login-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
+        <label for="login-password">Password</label>
+        <input id="login-password" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" minlength="6" required />
+        <div class="auth-row">
+          <label class="remember-me"><input type="checkbox" name="remember" /> <span>Remember me</span></label>
+          <a href="#forgot-password" class="auth-link">Forgot password?</a>
+        </div>
+        <button class="auth-submit" type="submit">Log in</button>
+      </form>
+
+      <form class="auth-form is-hidden" id="signup-panel" data-mode="signup" role="tabpanel" aria-labelledby="signup-tab" hidden>
+        <label for="signup-name">Full name</label>
+        <input id="signup-name" name="name" type="text" autocomplete="name" placeholder="Your full name" required />
+        <label for="signup-email">Email address</label>
+        <input id="signup-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
+        <label for="signup-password">Create a password</label>
+        <input id="signup-password" name="password" type="password" autocomplete="new-password" placeholder="At least 6 characters" minlength="6" required />
+        <button class="auth-submit" type="submit">Create account</button>
+      </form>
+
+      <p class="auth-status" id="auth-status" role="status" aria-live="polite"></p>
+      <p class="auth-back">Prefer to browse first? <a class="auth-link" href="index.html">Return to shop</a></p>
+    </section>
+  </main>
+  <script src="js/auth.js"></script>
+</body>
+</html>

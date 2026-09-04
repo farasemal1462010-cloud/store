@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Details — Kidi Care</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/product-details.css" />
+</head>
+<body class="details-page">
+  <header class="details-header">
+    <a class="logo" href="index.html">
+      <img class="custom-logo" src="img/logo.jpg" alt="Kidi Care Logo" width="48" height="48" />
+      <span class="logo-text">Kidi Care</span>
+    </a>
+    <a class="details-back" href="index.html">← Continue shopping</a>
+  </header>
+
+  <main class="details-main">
+    <a class="details-breadcrumb" href="index.html">Home / Products / <span id="breadcrumb-name">Product</span></a>
+    <section class="details-grid">
+      <div class="details-image-wrap">
+        <img id="product-image" src="" alt="" />
+      </div>
+      <div class="details-content">
+        <span class="details-kicker">Certified pediatric care</span>
+        <h1 id="product-name">Product</h1>
+        <div class="owner-product-actions" id="owner-product-actions">
+          <button class="owner-action edit" id="owner-edit-link" type="button">Edit product</button>
+          <button class="owner-action remove" id="owner-remove-product" type="button">Remove product</button>
+        </div>
+        <div class="details-rating"><span>★★★★★</span> <span id="product-rating"></span></div>
+        <p class="details-description" id="product-description"></p>
+        <div class="details-price" id="product-price"></div>
+        <div class="details-actions">
+          <label for="quantity">Quantity</label>
+          <input id="quantity" type="number" min="1" value="1" />
+          <button class="details-add" id="details-add" type="button">Add to cart</button>
+        </div>
+        <form class="inline-edit-form" id="inline-edit-form" hidden>
+          <h2>Edit product</h2>
+          <label>Product name<input name="name" type="text" required /></label>
+          <label>Price<input name="price" type="number" min="0" step="0.01" required /></label>
+          <label>Image filename<input name="image" type="text" required /></label>
+          <label>Rating<input name="rating" type="text" required /></label>
+          <label>Description<textarea name="description" required></textarea></label>
+          <div class="inline-edit-actions">
+            <button class="details-add" type="submit">Save changes</button>
+            <button class="inline-cancel" id="cancel-edit" type="button">Cancel</button>
+          </div>
+          <p class="inline-edit-status" id="inline-edit-status" role="status"></p>
+        </form>
+        <ul class="details-benefits">
+          <li>✓ Trusted quality and pediatric-friendly design</li>
+          <li>✓ Carefully packed for safe delivery</li>
+          <li>✓ Support available from our care team</li>
+        </ul>
+        <div class="payment-methods" aria-labelledby="payment-title">
+          <h2 id="payment-title">Secure payment options</h2>
+          <p>Choose your preferred payment method at checkout.</p>
+          <div class="payment-method-list">
+            <span class="payment-method">VISA</span>
+            <span class="payment-method">MC</span>
+            <span class="payment-method">AMEX</span>
+            <span class="payment-method">PayPal</span>
+            <span class="payment-method">Apple Pay</span>
+            <span class="payment-method">Cash on delivery</span>
+          </div>
+        </div>
+        <p class="details-status" id="details-status" role="status"></p>
+      </div>
+    </section>
+  </main>
+  <script src="js/product-details.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout — Kidi Care</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/checkout.css" />
+</head>
+<body class="checkout-page">
+  <header class="checkout-header">
+    <a class="logo" href="index.html"><img class="custom-logo" src="img/logo.jpg" alt="Kidi Care Logo" width="48" height="48" /><span class="logo-text">Kidi Care</span></a>
+    <a class="checkout-back" href="cart.html">← Back to cart</a>
+  </header>
+  <main class="checkout-main">
+    <div class="checkout-heading"><span class="checkout-kicker">Almost there</span><h1>Complete your order</h1><p>Secure checkout for your pediatric care essentials.</p></div>
+    <div id="checkout-content" class="checkout-layout">
+      <form class="checkout-form" id="checkout-form">
+        <section class="checkout-section">
+          <h2>Contact information</h2>
+          <div class="form-grid">
+            <label>Email address<input type="email" name="email" autocomplete="email" placeholder="you@example.com" required /></label>
+            <label>Phone number<input type="tel" name="phone" autocomplete="tel" placeholder="+1 (555) 000-0000" required /></label>
+          </div>
+        </section>
+        <section class="checkout-section">
+          <h2>Delivery address</h2>
+          <div class="form-grid">
+            <label class="full-field">Full name<input type="text" name="name" autocomplete="name" placeholder="Your full name" required /></label>
+            <label class="full-field">Street address<input type="text" name="address" autocomplete="street-address" placeholder="123 Main Street" required /></label>
+            <label>City<input type="text" name="city" autocomplete="address-level2" placeholder="Health City" required /></label>
+            <label>Postal code<input type="text" name="postal" autocomplete="postal-code" placeholder="10001" required /></label>
+          </div>
+        </section>
+        <section class="checkout-section">
+          <h2>Payment method</h2>
+          <div class="payment-choice-list">
+            <label class="payment-choice active"><input type="radio" name="payment" value="card" checked /> <span><strong>Credit or debit card</strong><small>Visa, Mastercard, or AMEX</small></span><b>▣</b></label>
+            <label class="payment-choice"><input type="radio" name="payment" value="paypal" /> <span><strong>PayPal</strong><small>Pay securely with your PayPal account</small></span><b>◉</b></label>
+            <label class="payment-choice"><input type="radio" name="payment" value="cash" /> <span><strong>Cash on delivery</strong><small>Pay when your order arrives</small></span><b>▤</b></label>
+          </div>
+          <div class="card-fields" id="card-fields">
+            <label>Card number<input type="text" inputmode="numeric" autocomplete="cc-number" placeholder="1234 5678 9012 3456" minlength="12" required /></label>
+            <div class="form-grid"><label>Expiry date<input type="text" autocomplete="cc-exp" placeholder="MM / YY" required /></label><label>Security code<input type="text" inputmode="numeric" autocomplete="cc-csc" placeholder="CVC" required /></label></div>
+          </div>
+          <p class="payment-info is-hidden" id="paypal-info">You will be redirected to PayPal after placing your order.</p>
+          <p class="payment-info is-hidden" id="cash-info">Pay securely in cash when your order is delivered.</p>
+        </section>
+        <button class="place-order-btn" type="submit">Place order</button>
+        <p class="checkout-status" id="checkout-status" role="status"></p>
+      </form>
+      <aside class="checkout-summary">
+        <h2>Order summary</h2>
+        <div id="checkout-items"></div>
+        <div class="summary-line"><span>Subtotal</span><strong id="checkout-subtotal">$0.00</strong></div>
+        <div class="summary-line"><span>Delivery</span><span>Free</span></div>
+        <div class="summary-total"><span>Total</span><strong id="checkout-total">$0.00</strong></div>
+        <p class="secure-note">🔒 Your information is protected with secure checkout.</p>
+      </aside>
+    </div>
+  </main>
+  <script src="js/checkout.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Owner Dashboard — Kidi Care</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    :root { --ink: #29253d; --muted: #77738a; --line: #eceaf3; --panel: #fff; --soft: #f8f7fc; }
+    body { margin: 0; background: #f7f6fb; color: var(--ink); }
+    main { width: min(100% - 2rem, 1320px); margin: 0 auto; padding: 1.5rem 0 4rem; }
+    .app-shell { display: grid; grid-template-columns: 220px 1fr; gap: 2rem; }
+    .sidebar { position: sticky; top: 1.5rem; height: fit-content; padding: 1rem; background: var(--panel); border: 1px solid var(--line); border-radius: 20px; box-shadow: 0 12px 35px rgba(51, 43, 87, .06); }
+    .sidebar-brand { display: flex; align-items: center; gap: .65rem; padding: .5rem; color: var(--ink); font-weight: 800; text-decoration: none; }
+    .sidebar-brand img { width: 38px; height: 38px; border-radius: 12px; object-fit: cover; }
+    .sidebar-nav { display: grid; gap: .35rem; margin-top: 1.5rem; }
+    .sidebar-nav button { width: 100%; margin: 0; padding: .8rem; background: transparent; color: var(--muted); text-align: left; }
+    .sidebar-nav button.active, .sidebar-nav button:hover { background: #eeeaf9; color: var(--purple-600); }
+    .sidebar-note { margin: 2rem .5rem .5rem; padding-top: 1rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .75rem; line-height: 1.5; }
+    .content { min-width: 0; }
+    .dashboard-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .5rem 0 2rem; }
+    .dashboard-header .logo { text-decoration: none; }
+    .dashboard-kicker { margin: 0 0 .25rem; color: var(--purple-600); font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .dashboard-header h1 { margin: 0; font-size: clamp(1.6rem, 3vw, 2.25rem); }
+    .dashboard-header p { margin: .35rem 0 0; color: var(--muted); }
+    .admin-card { padding: 1.5rem; margin-top: 1.25rem; background: var(--panel); border: 1px solid var(--line); border-radius: 20px; box-shadow: 0 12px 35px rgba(51, 43, 87, .06); }
+    .section-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 1.25rem; }
+    .section-heading h2, .admin-card > h1 { margin: 0; }
+    .section-heading p, .admin-card > p { margin: .35rem 0 0; color: var(--muted); }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .stat-card { padding: 1.25rem; background: var(--panel); border: 1px solid var(--line); border-radius: 16px; }
+    .stat-card span { color: var(--muted); font-size: .78rem; font-weight: 700; }
+    .stat-card strong { display: block; margin-top: .4rem; font-size: 1.9rem; }
+    .stat-card.pending strong { color: #d47d24; }.stat-card.processing strong { color: var(--purple-600); }.stat-card.delivered strong { color: #29946f; }
+    .admin-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .8rem; }
+    label { display: grid; gap: .35rem; color: #5e5a70; font-size: .8rem; font-weight: 700; }
+    input, textarea, select { padding: .72rem; border: 1px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); font: inherit; }
+    textarea { min-height: 90px; resize: vertical; }.full { grid-column: 1 / -1; }
+    button { padding: .72rem 1rem; border: 0; border-radius: 10px; background: var(--purple-600); color: white; font-weight: 800; cursor: pointer; margin-right: .5rem; }
+    button:hover { filter: brightness(.96); }.danger-button { background: #d94f70; }
+    .secondary-button { background: #eeeaf9; color: var(--purple-600); }
+    hr { margin: 2rem 0; border: 0; border-top: 1px solid var(--line); }
+    .admin-status { min-height: 1.3rem; margin-top: 1rem; color: #29946f; font-weight: 700; }
+    .orders-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin: 1rem 0; padding: .8rem 1rem; background: var(--soft); border-radius: 12px; }
+    .orders-toolbar label { display: flex; align-items: center; gap: .6rem; }
+    .orders-toolbar select, .order-status-select { padding: .55rem; }
+    .orders-table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
+    .orders-table { width: 100%; min-width: 980px; border-collapse: collapse; font-size: .82rem; }
+    .orders-table th, .orders-table td { padding: .9rem .75rem; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    .orders-table tr:last-child td { border-bottom: 0; }.orders-table th { background: var(--soft); color: var(--muted); font-size: .7rem; letter-spacing: .04em; text-transform: uppercase; }
+    .order-items { min-width: 180px; margin: 0; padding-left: 1rem; }.order-items li { margin-bottom: .25rem; }
+    .order-status { display: inline-block; margin-bottom: .4rem; padding: .25rem .55rem; border-radius: 999px; background: #eeeaf9; color: var(--purple-600); font-size: .7rem; font-weight: 800; text-transform: capitalize; }
+    .order-action { padding: .45rem .65rem; margin-top: .35rem; font-size: .72rem; }.empty-orders { padding: 1.5rem 0; color: var(--muted); text-align: center; }
+    @media (max-width: 900px) { .app-shell { grid-template-columns: 1fr; gap: 1rem; }.sidebar { position: static; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }.sidebar-nav { display: flex; margin: 0; }.sidebar-note { display: none; } }
+    @media (max-width: 800px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { main { width: min(100% - 1rem, 1320px); }.sidebar { align-items: stretch; flex-direction: column; }.sidebar-nav button { text-align: center; }.dashboard-header { align-items: flex-start; flex-direction: column; }.admin-grid { grid-template-columns: 1fr; }.full { grid-column: auto; }.section-heading, .orders-toolbar { align-items: stretch; flex-direction: column; }.orders-toolbar label { justify-content: space-between; } }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="sidebar-brand" href="index.html"><img src="img/logo.jpg" alt="Kidi Care logo" /><span>Kidi Care</span></a>
+        <nav class="sidebar-nav" aria-label="Dashboard sections">
+          <button type="button" class="active" data-section="orders-card">📦 Orders</button>
+          <button type="button" data-section="products-card">🛍️ Products</button>
+        </nav>
+        <p class="sidebar-note">Owner workspace<br />Your store at a glance.</p>
+      </aside>
+      <div class="content">
+        <header class="dashboard-header">
+          <div><p class="dashboard-kicker">Owner workspace</p><h1>Good morning, Owner</h1><p>Here is what is happening in your store today.</p></div>
+          <a class="secondary-button" href="shop.html">View store ↗</a>
+        </header>
+    <section class="admin-card" id="login-card"><h1>Owner sign in</h1><p>Sign in to manage products and store orders.</p><form id="login-form"><div class="admin-grid"><label>Email<input name="email" type="email" required /></label><label>Password<input name="password" type="password" required /></label></div><br /><button type="submit">Sign in</button></form></section>
+    <div class="stats-grid" id="stats-grid" hidden><div class="stat-card"><span>Total orders</span><strong id="stat-total">0</strong></div><div class="stat-card pending"><span>Needs attention</span><strong id="stat-pending">0</strong></div><div class="stat-card processing"><span>In progress</span><strong id="stat-processing">0</strong></div><div class="stat-card delivered"><span>Delivered</span><strong id="stat-delivered">0</strong></div></div>
+    <section class="admin-card" id="products-card" hidden>
+      <div class="section-heading"><div><h2>Product catalog</h2><p>Update prices, descriptions, and availability.</p></div></div>
+      <label>Select product<select id="product-select"></select></label>
+      <form id="product-form"><div class="admin-grid"><label>Name<input name="name" required /></label><label>Price<input name="price" type="number" min="0" step="0.01" required /></label><label>Image filename<input name="image" required /></label><label>Rating<input name="rating" required /></label><label class="full">Description<textarea name="description" required></textarea></label></div><br /><button type="submit">Save changes</button><button type="button" id="delete-product" class="danger-button">Remove this product</button></form>
+      <hr /><h2>Add a new product</h2>
+      <form id="add-product-form"><div class="admin-grid"><label>Name<input name="name" required /></label><label>Price<input name="price" type="number" min="0" step="0.01" required /></label><label>Image filename<input name="image" required /></label><label>Rating<input name="rating" required /></label><label class="full">Description<textarea name="description" required></textarea></label></div><br /><button type="submit">Add product</button></form>
+    </section>
+    <section class="admin-card" id="orders-card" hidden>
+      <div class="section-heading"><div><h2>Recent orders</h2><p>Review customer details and keep fulfillment status up to date.</p></div></div>
+      <div class="orders-toolbar"><strong id="orders-count">0 orders</strong><label>Filter by status<select id="order-status-filter"><option value="">All orders</option><option value="pending">Pending</option><option value="confirmed">Confirmed</option><option value="processing">Processing</option><option value="shipped">Shipped</option><option value="delivered">Delivered</option><option value="cancelled">Cancelled</option><option value="archived">Archived</option></select></label></div>
+      <div class="orders-table-wrap"><table class="orders-table"><thead><tr><th>Order</th><th>Customer</th><th>Delivery address</th><th>Items</th><th>Payment</th><th>Total</th><th>Status</th></tr></thead><tbody id="orders-body"></tbody></table></div>
+    </section>
+    <p class="admin-status" id="status" role="status"></p>
+      </div>
+    </div>
+  </main>
+  <script src="js/admin.js"></script>
+</body>
+</html>
